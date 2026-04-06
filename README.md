@@ -54,18 +54,20 @@ Rendez-vous confirmé
 ```
 mediRoute-ai/
 │
-├── core/          → Moteur central générique
-├── domains/       → Modules par domaine
-│   ├── medical/   → MediRoute (ACTIF)
-│   ├── legal/     → Planifié Q1 2027
-│   └── finance/   → Planifié Q2 2027
-├── data/          → Data loading & Validation
-├── engine/        → ML Classification & Vectors
-├── llm/           → LLM Client & Prompt Engine
-├── knowledge_base/→ Medical RAG Database
-├── agents/        → Autonomous Orchestration
-├── api/           → FastAPI Backend
-└── app.py         → Streamlit Interface
+├── core/           → Moteur central générique
+├── domains/        → Modules par domaine
+│   ├── medical/    → MediRoute (ACTIF)
+│   ├── legal/      → Planifié Q1 2027
+│   └── finance/    → Planifié Q2 2027
+├── data/           → Data loading & Validation
+├── engine/         → ML Classification & Vectors
+├── llm/            → LLM Client & Prompt Engine
+├── knowledge_base/ → Medical RAG Database
+├── agents/         → Autonomous Orchestration
+├── api/            → FastAPI Backend
+├── tests/          → Test suite
+└── app.py          → Streamlit Interface
+
 ```
 
 ---
@@ -98,10 +100,11 @@ mediRoute-ai/
 ## 🗺️ Roadmap
 
 ### Phase 1 — Foundation (Mars → Juin 2026)
-- [x] Core patient model ✅
-- [x] LLM client with retry logic ✅
-- [x] Symptom vector engine ✅
-- [x] Broadcasting batch processor ✅
+- [x] Core patient model
+- [x] LLM client with retry logic
+- [x] Symptom vector engine
+- [x] Broadcasting batch processor
+- [ ] Generic domain architecture
 - [ ] Pandas data pipeline (Semaine 3)
 - [ ] ML urgency classifier (Semaine 8)
 
