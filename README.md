@@ -52,10 +52,14 @@ Rendez-vous confirmé
 
 ## 🏗️ Architecture
 ```
-mediRoute_ai/
+mediRoute-ai/
 │
-├── core/          → Patient model & Assessment
-├── data/          → Data loading & Validation  
+├── core/          → Moteur central générique
+├── domains/       → Modules par domaine
+│   ├── medical/   → MediRoute (ACTIF)
+│   ├── legal/     → Planifié Q1 2027
+│   └── finance/   → Planifié Q2 2027
+├── data/          → Data loading & Validation
 ├── engine/        → ML Classification & Vectors
 ├── llm/           → LLM Client & Prompt Engine
 ├── knowledge_base/→ Medical RAG Database
@@ -94,10 +98,10 @@ mediRoute_ai/
 ## 🗺️ Roadmap
 
 ### Phase 1 — Foundation (Mars → Juin 2026)
-- [x] Core patient model
-- [x] LLM client with retry logic
-- [x] Symptom vector engine
-- [x] Broadcasting batch processor
+- [x] Core patient model ✅
+- [x] LLM client with retry logic ✅
+- [x] Symptom vector engine ✅
+- [x] Broadcasting batch processor ✅
 - [ ] Pandas data pipeline (Semaine 3)
 - [ ] ML urgency classifier (Semaine 8)
 
@@ -142,3 +146,5 @@ Consultez toujours un professionnel de santé.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Tensoratech-blue)](https://linkedin.com/company/tensoratech)
 ```
+
+

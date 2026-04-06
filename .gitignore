@@ -207,9 +207,8 @@ marimo/_lsp/
 __marimo__/
 
 
-# Environment
+# MediRoute AI specific
 .env.local
-
 *.pyc
 *.pyo
 
@@ -230,3 +229,17 @@ knowledge_base/vector_store/*
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb
+
+data/samples/*.csv
+mediRoute_data/
+mediRoute_output/
+mediRoute_v01/
+
+
+
+
+
+
+
+# mon dossier decisions
+_solution_memoire/

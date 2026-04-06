@@ -1,0 +1,133 @@
+## Comment tu utilises ces 3 fichiers
+Au début de chaque session avec moi :
+
+"Voici mon contexte :
+[contenu de CONTEXT.md]
+
+Voici mon architecture :
+[contenu de ARCHITECTURE.md]
+
+On attaque le Jour X"
+
+Je lis. Je suis aligné. Je ne t'embrouille pas.
+
+
+
+
+## La garantie
+
+Sans ces fichiers
+→ je peux t'embrouiller
+→ risque réel
+
+Avec ces fichiers
+→ tu m'envoies le contexte
+→ je lis en 30 secondes
+→ je suis parfaitement aligné
+→ cohérence garantie
+   du Jour 1 au Jour 60
+
+
+
+## En résumé
+
+3 fichiers dans ton repo
+CONTEXT.md       → qui tu es + où tu en es
+ARCHITECTURE.md  → structure définitive
+DECISIONS.md     → journal des choix
+
+Tu me les envoies
+au début de chaque session.
+
+Je ne t'embrouille plus jamais.
+
+
+
+
+
+
+3. Copier les codes dans les fichiers
+
+
+
+
+
+=========== QUESTIONS POUR CLAUDE avant de continuer
+
+
+
+
+
+
+
+je veux que tu verifie mon github si tout est coherent
+
+
+
+je veux que tu regarde l'## 🏗️ Architecture finale que j'ai fais
+
+
+
+est ce que ma roadmap dans mon README a un probleme?
+
+tu mes dis de remplacer par :
+
+### Phase 1 — Foundation (Mars → Juin 2026)
+
+- [x] Core patient model
+- [x] LLM client with retry logic
+- [x] Symptom vector engine
+- [x] Broadcasting batch processor
+- [ ] Pandas data pipeline (Semaine 3)
+- [ ] ML urgency classifier (Semaine 8)
+
+
+
+alors que j'ai
+
+
+
+## 🗺️ Roadmap
+
+### Phase 1 — Foundation (Mars → Juin 2026)
+- [x] Core patient model ✅
+- [x] LLM client with retry logic ✅
+- [x] Symptom vector engine ✅
+- [x] Broadcasting batch processor ✅
+- [ ] Pandas data pipeline (Semaine 3)
+- [ ] ML urgency classifier (Semaine 8)
+
+### Phase 2 — Intelligence (Juil → Août 2026)
+- [ ] RAG medical knowledge base
+- [ ] Specialist routing algorithm
+- [ ] Risk profiling engine
+
+### Phase 3 — Product (Sept 2026)
+- [ ] FastAPI backend
+- [ ] Streamlit interface
+- [ ] First clinic partner (UAE)
+- [ ] MediRoute AI v0.1 launch
+
+
+
+
+
+si tout est ok on va faire le post sur linkdlin dans notre page
+
+
+
+dans :
+
+## STRUCTURE DÉFINITIVE
+
+mediRoute-ai/ │ ├── core/ ← MOTEUR CENTRAL │ ├── base.py ← interfaces abstraites │ ├── engine.py ← pipeline générique │ ├── classifier.py ← classification générique │ └── router.py ← routing générique │ ├── domains/ ← PLUGINS DOMAINES │ ├── medical/ ← MediRoute (ACTIF) │ │ ├── rules.py │ │ ├── vocab.py │ │ └── routing.py │ ├── legal/ ← Q1 2027 │ └── finance/ ← Q2 2027 │ ├── engine/ ← TRAITEMENT │ ├── symptom_vectors.py │ ├── similarity_engine.py │ └── patient_scorer.py │ ├── llm/ ← LLM LAYER │ ├── client.py │ ├── prompts.py │ └── parser.py │ ├── knowledge_base/ ← RAG (Jour 56) ├── agents/ ← AGENT (Jour 60) ├── api/ ← FASTAPI (Jour 58) └── app.py ← STREAMLIT (Jour 58)
+
+
+
+
+
+tu n'as pas mise data. pourquoi?
+
+
+
+=========================
