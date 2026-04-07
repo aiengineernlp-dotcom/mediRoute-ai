@@ -1,9 +1,8 @@
-# llm_client_retry.py
 """
-Production LLM Client with Retry Logic.
-Use case: Resilient LLM API calls with exponential backoff.
-Pattern: Used in ALL production AI systems.
-Stack: Exceptions + Context managers → foundation for LangChain clients.
+Production LLM Client with Retry logic.
+Cas d'utilisation: Resillient LLM API calls with exponential backoff.
+Stack : Exceptions + Context managers
+
 """
 import time
 import random
