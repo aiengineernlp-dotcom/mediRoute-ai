@@ -251,6 +251,7 @@ docus/
 
 
 
+##Vider le cache de Git
 
 ## On retire tout de l'index (pas du disque !)
 #git rm -r --cached .
