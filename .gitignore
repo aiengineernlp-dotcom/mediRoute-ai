@@ -241,7 +241,7 @@ mediRoute_v01/
 #BASH
 
 # 1. Ignorer tout le contenu du dossier docus
-#docus/
+docus/
 # 2. Sauf un fichier spécifique
 #!docus/keep.txt
 
