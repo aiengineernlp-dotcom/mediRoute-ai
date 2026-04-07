@@ -59,7 +59,7 @@ def batch_retrieve(
         top_k         : results per query
 
     Returns:
-        list of lists — top_k docs per query
+        list of lists — top_k docus per query
     """
     sim_matrix = cosine_similarity_matrix(
         query_vectors, doc_vectors

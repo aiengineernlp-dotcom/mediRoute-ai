@@ -238,9 +238,25 @@ mediRoute_v01/
 
 
 
+#BASH
+
+# 1. Ignorer tout le contenu du dossier docus
+docus/
+# 2. Sauf un fichier spécifique
+#!docus/keep.txt
+
+# 3. Ignorer uniquement ce fichier spécifique
+#docus/db.php
 
 
 
-# mon dossier decisions
-_solution_memoire/
-*.readme_how_to_use_files_md
+
+
+## On retire tout de l'index (pas du disque !)
+#git rm -r --cached .
+#
+## On rajoute tout (Git respectera alors le .gitignore)
+#git add .
+#
+## On valide le changement
+#git commit -m "Fix: mise à jour du gitignore"

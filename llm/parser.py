@@ -188,7 +188,7 @@ Here are the key steps:
 Please contact the team:
 - Tech lead: alice@startup.ai
 - Data scientist: bob@company.com
-Visit our docs at https://docs.langchain.com
+Visit our docus at https://docs.langchain.com
 """,
 }
 
