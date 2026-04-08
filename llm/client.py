@@ -154,6 +154,7 @@ prompts = [
     "What is retrieval augmented generation?",
     "Explain vector databases in simple terms",
     "How does LangChain work?",
+    "parle moi de tuberculose."
 ]
 
 for prompt in prompts:
