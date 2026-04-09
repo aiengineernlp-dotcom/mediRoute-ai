@@ -1,6 +1,6 @@
-# mediRoute_ai/engine/similarity_engine.py
 """
 MediRoute AI — Vectorized Similarity Engine.
+Trouver les cas similaire a partir de l'historiques des donnees en base de donnees en utilisant les operation matrix
 Finds similar historical cases using matrix operations.
 This is the core of the RAG retrieval system.
 Broadcasting replaces all loops.
@@ -13,7 +13,7 @@ def cosine_similarity_matrix(
     documents: np.ndarray
 ) -> np.ndarray:
     """
-    Compute ALL pairwise similarities at once.
+    calcule  TOUT  les paires  similarities at once.
 
     Args:
         queries   : shape (n_queries, dim)
@@ -28,12 +28,8 @@ def cosine_similarity_matrix(
         in ONE operation
     """
     # Normaliser les deux matrices
-    q_norms = np.linalg.norm(
-        queries, axis=1, keepdims=True
-    )
-    d_norms = np.linalg.norm(
-        documents, axis=1, keepdims=True
-    )
+    q_norms = np.linalg.norm( queries, axis=1, keepdims=True)
+    d_norms = np.linalg.norm(documents, axis=1, keepdims=True)
 
     q_normalized = queries   / (q_norms + 1e-8)
     d_normalized = documents / (d_norms + 1e-8)
