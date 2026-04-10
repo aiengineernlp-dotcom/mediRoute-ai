@@ -1,90 +1,77 @@
 """
-MediRoute AI — Vectorized Similarity Engine.
-Trouver les cas similaire a partir de l'historiques des donnees en base de donnees en utilisant les operation matrix
-Finds similar historical cases using matrix operations.
-This is the core of the RAG retrieval system.
-Broadcasting replaces all loops.
+MediRoute AI - Vectorized Similarity Engine.
+Finds similar historical cases using Matrix operations
+This is the core of the RAG retrieval system
 """
+
+
 import numpy as np
 
-
-def cosine_similarity_matrix(
-    queries:   np.ndarray,
-    documents: np.ndarray
-) -> np.ndarray:
+def cosine_similarity_matrix(queries: np.ndarray, documents: np.ndarray)->np.ndarray:
     """
-    calcule  TOUT  les paires  similarities at once.
+    Compute ALL pairwise similarities at once.
 
     Args:
-        queries   : shape (n_queries, dim)
-        documents : shape (n_docs, dim)
-
-    Returns:
-        similarity matrix (n_queries, n_docs)
-
-    Broadcasting magic:
-        queries @ documents.T
-        → every query vs every document
-        in ONE operation
+        - queries : shape(n_queries, dim)
+        - documents : shape(n_docs, dim)
+    Returns :
+        - Similarity matrix (n_queries , n_docs)
+    Brosdcasting magic:
+        - queries @ documents.T
+        -> every query vs every document in ONE operation
     """
-    # Normaliser les deux matrices
-    q_norms = np.linalg.norm( queries, axis=1, keepdims=True)
-    d_norms = np.linalg.norm(documents, axis=1, keepdims=True)
 
-    q_normalized = queries   / (q_norms + 1e-8)
-    d_normalized = documents / (d_norms + 1e-8)
 
-    # Produit matriciel = toutes les similarités
+    # normalization des deux matrices
+
+    q_norms = np.linalg.norm(queries, axis=1,keepdims = True)
+    d_norms = np.linalg.norm(documents, axis = 1, keepdims = True)
+
+    q_normalized = queries/(q_norms * 1e-8)
+    d_normalized = documents/(d_norms * 1e-8)
+
+    # produit matriciel
     return q_normalized @ d_normalized.T
 
 
-def batch_retrieve(
-    query_vectors:    np.ndarray,
-    doc_vectors:      np.ndarray,
-    doc_metadata:     list[dict],
-    top_k:            int = 3
-) -> list[list[dict]]:
+
+
+def batch_retreive(query_vectors: np.ndarray, doc_vectors: np.ndarray, doc_metadata:list[dict],top_k:int=3)->list[list[dict]]:
     """
-    Retrieve top-k similar documents
-    for EACH query simultaneously.
+    Recuperer le top_k similar documents pour CHAQUE query simultaneously
 
     Args:
-        query_vectors : (n_queries, dim)
-        doc_vectors   : (n_docs, dim)
-        doc_metadata  : list of doc info dicts
-        top_k         : results per query
-
-    Returns:
-        list of lists — top_k docus per query
+        - query_vectors: (n_queries, dim)
+        - doc_vectors : (n_docs, dim)
+        - doc_metadata: list of doc info dicts
+        - top_k: results per query
+    returns:
+        list of list - top_k docs per query
     """
-    sim_matrix = cosine_similarity_matrix(
-        query_vectors, doc_vectors
-    )
 
+    sim_matrix = cosine_similarity_matrix(query_vectors, doc_vectors)
     results = []
+
     for query_sims in sim_matrix:
         top_indices = np.argsort(query_sims)[::-1][:top_k]
         query_results = [
-            {
-                **doc_metadata[i],
-                "similarity": round(
-                    float(query_sims[i]), 4
-                )
-            }
-            for i in top_indices
+            {**doc_metadata[i], "similarity":round(float(query_sims[i]),4)} for i in top_indices
         ]
         results.append(query_results)
-
     return results
 
 
-# Simulation — base de connaissances médicales
-np.random.seed(42)
-DIM = 16  # dimension des embeddings
+#simulation - base de connaissance medicales
 
-# Documents médicaux (simulés)
+np.random.seed(42)
+DIM = 16 # dimentions des embeddings
+
+# documents medicaux (simules)
+
 n_docs = 8
+
 doc_vectors = np.random.randn(n_docs, DIM)
+
 doc_metadata = [
     {"id": "D001", "title": "Chest Pain Protocol",
      "specialist": "Cardiologist",    "urgency": "HIGH"},
@@ -104,9 +91,12 @@ doc_metadata = [
      "specialist": "Cardiologist",    "urgency": "HIGH"},
 ]
 
-# 3 nouveaux patients simultanés
-n_queries    = 3
+
+
+# 3 nouveau patients simultanes
+n_queries = 3
 query_vectors = np.random.randn(n_queries, DIM)
+
 query_labels  = [
     "Patient A: chest pain + breathing",
     "Patient B: headache + confusion",
@@ -114,21 +104,15 @@ query_labels  = [
 ]
 
 # Récupération en batch
-results = batch_retrieve(
-    query_vectors,
-    doc_vectors,
-    doc_metadata,
-    top_k=2
-)
+results = batch_retreive(query_vectors,doc_vectors, doc_metadata, top_k=2)
 
 print("=" * 60)
 print(f"{'MEDIROUTE AI — BATCH RAG RETRIEVAL':^60}")
 print("=" * 60)
 
-for query_label, query_results in zip(
-    query_labels, results
-):
-    print(f"\n  {query_label}")
+
+for query_labels, query_results in zip (query_labels, results):
+    print(f"\n  {query_labels}")
     for r in query_results:
         print(f"    → [{r['urgency']}] "
               f"{r['title']:<30} "
