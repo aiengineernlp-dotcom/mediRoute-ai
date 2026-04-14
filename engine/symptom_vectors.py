@@ -1,5 +1,9 @@
 # mediRoute_ai/engine/symptom_vectors.py
 """
+symptom Vector Engine for MediRoute AI.
+Use Case: Represent Symptoms as Numerical Vector for similarity comparison.
+Stack : Numpy arrays -> foundation for FAISS embeddings.
+================================================================
 MediRoute AI — Symptom Vector Engine v2.0
 Upgrade: Broadcasting for batch processing.
 Change from Jour 9: Now handles 1000 patients
@@ -66,7 +70,7 @@ def normalize_vectors(
         matrix, axis=1, keepdims=True
     )
     # Éviter division par zéro
-    norms = np.where(norms == 0, 1, norms)
+    norms = np.where(norms == 0, 1, norms) # si la valeur == 0 → mettre 1, sinon → garder la valeur originale
     return matrix / norms  # ← broadcasting
 
 
